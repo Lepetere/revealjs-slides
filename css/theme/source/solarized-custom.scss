@@ -56,6 +56,7 @@ $green:     #859900;
 $custom-red: #8c4738;
 $custom-beige: #fdf6e3;
 $custom-blue: #545487;
+$custom-black: #010101;
 
 // Override theme settings (see ../template/settings.scss)
 $mainColor: $base00;
@@ -75,11 +76,11 @@ $selectionBackgroundColor: $magenta;
 @import "../template/theme";
 // ---------------------------------------------
 
+
 // overrides
+// base
 
 .reveal {
-
-	// base
 	ul {
 		list-style-type: none;
 		text-align: center;
@@ -100,59 +101,90 @@ $selectionBackgroundColor: $magenta;
 			margin-top: 1em;
 		}
 	}
+}
 
-	// themes
-	.beige-themed {
+// themes
+.beige-themed {
+	body {
+		background-color: $custom-beige;
+	}
 
-		h1, h2, h3, h4, h5, h6 {
-			em {
-				font-style: normal;
+	.reveal {
+		.slides {
+			h1, h2, h3, h4, h5, h6 {
+				em {
+					font-style: normal;
+					color: $custom-red;
+				}
+			}
+
+			img {
+				border: none;
+				box-shadow: none;
+				margin: 15px;
+			}
+		}
+	}
+}
+
+.red-themed {
+	body {
+		background-color: $custom-red;
+	}
+
+	.reveal {
+		.slides {
+			color: $custom-beige;
+
+			h1, h2, h3, h4, h5, h6 {
+				color: $custom-beige;
+
+				em {
+					font-style: normal;
+					color: black;
+				}
+			}
+		}
+	}
+}
+
+.blue-themed {
+	body {
+		background-color: $custom-blue;
+	}
+
+	.reveal {
+		.slides {
+			color: $custom-beige;
+
+			h1, h2, h3, h4, h5, h6 {
+				color: $custom-beige;
+
+				em {
+					font-style: normal;
+					color: white;
+				}
+			}
+		}
+	}
+}
+
+.black-themed {
+	body {
+		background-color: $custom-black;
+	}
+
+	.reveal {
+		.slides {
+			color: $custom-beige;
+
+			h1, h2, h3, h4, h5, h6 {
 				color: $custom-red;
-			}
-		}
 
-		img {
-			border: none;
-			box-shadow: none;
-			margin: 15px;
-		}
-	}
-
-	.red-themed {
-		color: $custom-beige;
-
-		h1, h2, h3, h4, h5, h6 {
-			color: $custom-beige;
-
-			em {
-				font-style: normal;
-				color: black;
-			}
-		}
-	}
-
-	.blue-themed {
-		color: $custom-beige;
-
-		h1, h2, h3, h4, h5, h6 {
-			color: $custom-beige;
-
-			em {
-				font-style: normal;
-				color: white;
-			}
-		}
-	}
-
-	.black-themed {
-		color: $custom-beige;
-
-		h1, h2, h3, h4, h5, h6 {
-			color: $custom-red;
-
-			em {
-				font-style: normal;
-				color: #333e;
+				em {
+					font-style: normal;
+					color: #333e;
+				}
 			}
 		}
 	}

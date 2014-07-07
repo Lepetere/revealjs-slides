@@ -154,31 +154,43 @@ body {
   color: #586e75;
   font-size: 0.5em;
   margin-top: 1em; }
-.reveal .beige-themed h1 em, .reveal .beige-themed h2 em, .reveal .beige-themed h3 em, .reveal .beige-themed h4 em, .reveal .beige-themed h5 em, .reveal .beige-themed h6 em {
+
+.beige-themed body {
+  background-color: #fdf6e3; }
+.beige-themed .reveal .slides h1 em, .beige-themed .reveal .slides h2 em, .beige-themed .reveal .slides h3 em, .beige-themed .reveal .slides h4 em, .beige-themed .reveal .slides h5 em, .beige-themed .reveal .slides h6 em {
   font-style: normal;
   color: #8c4738; }
-.reveal .beige-themed img {
+.beige-themed .reveal .slides img {
   border: none;
   box-shadow: none;
   margin: 15px; }
-.reveal .red-themed {
+
+.red-themed body {
+  background-color: #8c4738; }
+.red-themed .reveal .slides {
   color: #fdf6e3; }
-  .reveal .red-themed h1, .reveal .red-themed h2, .reveal .red-themed h3, .reveal .red-themed h4, .reveal .red-themed h5, .reveal .red-themed h6 {
+  .red-themed .reveal .slides h1, .red-themed .reveal .slides h2, .red-themed .reveal .slides h3, .red-themed .reveal .slides h4, .red-themed .reveal .slides h5, .red-themed .reveal .slides h6 {
     color: #fdf6e3; }
-    .reveal .red-themed h1 em, .reveal .red-themed h2 em, .reveal .red-themed h3 em, .reveal .red-themed h4 em, .reveal .red-themed h5 em, .reveal .red-themed h6 em {
+    .red-themed .reveal .slides h1 em, .red-themed .reveal .slides h2 em, .red-themed .reveal .slides h3 em, .red-themed .reveal .slides h4 em, .red-themed .reveal .slides h5 em, .red-themed .reveal .slides h6 em {
       font-style: normal;
       color: black; }
-.reveal .blue-themed {
+
+.blue-themed body {
+  background-color: #545487; }
+.blue-themed .reveal .slides {
   color: #fdf6e3; }
-  .reveal .blue-themed h1, .reveal .blue-themed h2, .reveal .blue-themed h3, .reveal .blue-themed h4, .reveal .blue-themed h5, .reveal .blue-themed h6 {
+  .blue-themed .reveal .slides h1, .blue-themed .reveal .slides h2, .blue-themed .reveal .slides h3, .blue-themed .reveal .slides h4, .blue-themed .reveal .slides h5, .blue-themed .reveal .slides h6 {
     color: #fdf6e3; }
-    .reveal .blue-themed h1 em, .reveal .blue-themed h2 em, .reveal .blue-themed h3 em, .reveal .blue-themed h4 em, .reveal .blue-themed h5 em, .reveal .blue-themed h6 em {
+    .blue-themed .reveal .slides h1 em, .blue-themed .reveal .slides h2 em, .blue-themed .reveal .slides h3 em, .blue-themed .reveal .slides h4 em, .blue-themed .reveal .slides h5 em, .blue-themed .reveal .slides h6 em {
       font-style: normal;
       color: white; }
-.reveal .black-themed {
+
+.black-themed body {
+  background-color: #010101; }
+.black-themed .reveal .slides {
   color: #fdf6e3; }
-  .reveal .black-themed h1, .reveal .black-themed h2, .reveal .black-themed h3, .reveal .black-themed h4, .reveal .black-themed h5, .reveal .black-themed h6 {
+  .black-themed .reveal .slides h1, .black-themed .reveal .slides h2, .black-themed .reveal .slides h3, .black-themed .reveal .slides h4, .black-themed .reveal .slides h5, .black-themed .reveal .slides h6 {
     color: #8c4738; }
-    .reveal .black-themed h1 em, .reveal .black-themed h2 em, .reveal .black-themed h3 em, .reveal .black-themed h4 em, .reveal .black-themed h5 em, .reveal .black-themed h6 em {
+    .black-themed .reveal .slides h1 em, .black-themed .reveal .slides h2 em, .black-themed .reveal .slides h3 em, .black-themed .reveal .slides h4 em, .black-themed .reveal .slides h5 em, .black-themed .reveal .slides h6 em {
       font-style: normal;
       color: #333e; }
