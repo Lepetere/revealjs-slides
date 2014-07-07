@@ -1,6 +1,6 @@
 /**
  * Solarized Light theme for reveal.js.
- * Author: Achim Staebler
+ * Author: Achim Staebler, customized by Peter Fessel
  */
 @import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic);
 @font-face {
@@ -59,7 +59,7 @@ body {
  * LINKS
  *********************************************/
 .reveal a:not(.image) {
-  color: #268bd2;
+  color: black;
   text-decoration: none;
   -webkit-transition: color .15s ease;
   -moz-transition: color .15s ease;
@@ -68,13 +68,13 @@ body {
   transition: color .15s ease; }
 
 .reveal a:not(.image):hover {
-  color: #78b9e6;
+  color: #333333;
   text-shadow: none;
   border: none; }
 
 .reveal .roll span:after {
   color: #fff;
-  background: #1a6091; }
+  background: black; }
 
 /*********************************************
  * IMAGES
@@ -92,7 +92,7 @@ body {
 
 .reveal a:hover img {
   background: rgba(255, 255, 255, 0.2);
-  border-color: #268bd2;
+  border-color: black;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.55); }
 
 /*********************************************
@@ -100,31 +100,31 @@ body {
  *********************************************/
 .reveal .controls div.navigate-left,
 .reveal .controls div.navigate-left.enabled {
-  border-right-color: #268bd2; }
+  border-right-color: black; }
 
 .reveal .controls div.navigate-right,
 .reveal .controls div.navigate-right.enabled {
-  border-left-color: #268bd2; }
+  border-left-color: black; }
 
 .reveal .controls div.navigate-up,
 .reveal .controls div.navigate-up.enabled {
-  border-bottom-color: #268bd2; }
+  border-bottom-color: black; }
 
 .reveal .controls div.navigate-down,
 .reveal .controls div.navigate-down.enabled {
-  border-top-color: #268bd2; }
+  border-top-color: black; }
 
 .reveal .controls div.navigate-left.enabled:hover {
-  border-right-color: #78b9e6; }
+  border-right-color: #333333; }
 
 .reveal .controls div.navigate-right.enabled:hover {
-  border-left-color: #78b9e6; }
+  border-left-color: #333333; }
 
 .reveal .controls div.navigate-up.enabled:hover {
-  border-bottom-color: #78b9e6; }
+  border-bottom-color: #333333; }
 
 .reveal .controls div.navigate-down.enabled:hover {
-  border-top-color: #78b9e6; }
+  border-top-color: #333333; }
 
 /*********************************************
  * PROGRESS BAR
@@ -133,7 +133,7 @@ body {
   background: rgba(0, 0, 0, 0.2); }
 
 .reveal .progress span {
-  background: #268bd2;
+  background: black;
   -webkit-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
   -moz-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
   -ms-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
@@ -144,4 +144,37 @@ body {
  * SLIDE NUMBER
  *********************************************/
 .reveal .slide-number {
-  color: #268bd2; }
+  color: black; }
+
+.reveal ul {
+  list-style-type: none;
+  text-align: center;
+  margin: 0px; }
+.reveal .beige-themed h1 em, .reveal .beige-themed h2 em, .reveal .beige-themed h3 em, .reveal .beige-themed h4 em, .reveal .beige-themed h5 em, .reveal .beige-themed h6 em {
+  font-style: normal;
+  color: #8c4738; }
+.reveal .beige-themed img {
+  border: none;
+  box-shadow: none;
+  margin: 15px; }
+.reveal .red-themed {
+  color: #fdf6e3; }
+  .reveal .red-themed h1, .reveal .red-themed h2, .reveal .red-themed h3, .reveal .red-themed h4, .reveal .red-themed h5, .reveal .red-themed h6 {
+    color: #fdf6e3; }
+    .reveal .red-themed h1 em, .reveal .red-themed h2 em, .reveal .red-themed h3 em, .reveal .red-themed h4 em, .reveal .red-themed h5 em, .reveal .red-themed h6 em {
+      font-style: normal;
+      color: black; }
+.reveal .blue-themed {
+  color: #fdf6e3; }
+  .reveal .blue-themed h1, .reveal .blue-themed h2, .reveal .blue-themed h3, .reveal .blue-themed h4, .reveal .blue-themed h5, .reveal .blue-themed h6 {
+    color: #fdf6e3; }
+    .reveal .blue-themed h1 em, .reveal .blue-themed h2 em, .reveal .blue-themed h3 em, .reveal .blue-themed h4 em, .reveal .blue-themed h5 em, .reveal .blue-themed h6 em {
+      font-style: normal;
+      color: white; }
+.reveal .black-themed {
+  color: #fdf6e3; }
+  .reveal .black-themed h1, .reveal .black-themed h2, .reveal .black-themed h3, .reveal .black-themed h4, .reveal .black-themed h5, .reveal .black-themed h6 {
+    color: #fdf6e3; }
+    .reveal .black-themed h1 em, .reveal .black-themed h2 em, .reveal .black-themed h3 em, .reveal .black-themed h4 em, .reveal .black-themed h5 em, .reveal .black-themed h6 em {
+      font-style: normal;
+      color: #333e; }

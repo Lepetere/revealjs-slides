@@ -1,6 +1,6 @@
 /**
  * Solarized Light theme for reveal.js.
- * Author: Achim Staebler
+ * Author: Achim Staebler, customized by Peter Fessel
  */
 
 
@@ -43,7 +43,6 @@ $base00:    #657b83;
 $base0:     #839496;
 $base1:     #93a1a1;
 $base2:     #eee8d5;
-$base3:     #fdf6e3;
 $yellow:    #b58900;
 $orange:    #cb4b16;
 $red:       #dc322f;
@@ -53,22 +52,98 @@ $blue:      #268bd2;
 $cyan:      #2aa198;
 $green:     #859900;
 
+// custom colors
+$darkRed: #8c4738;
+$custom-beige: #fdf6e3;
+
 // Override theme settings (see ../template/settings.scss)
 $mainColor: $base00;
 $headingColor: $base01;
 $headingTextShadow: none;
-$backgroundColor: $base3;
-$linkColor: $blue;
+$backgroundColor: $custom-beige;
+$linkColor: black;
 $linkColorHover: lighten( $linkColor, 20% );
 $selectionBackgroundColor: $magenta;
 
 // Background generator
 // @mixin bodyBackground() {
-// 	@include radial-gradient( rgba($base3,1), rgba(lighten($base3, 20%),1) );
+// 	@include radial-gradient( rgba($custom-beige,1), rgba(lighten($custom-beige, 20%),1) );
 // }
-
-
 
 // Theme template ------------------------------
 @import "../template/theme";
 // ---------------------------------------------
+
+// overrides
+
+.reveal {
+
+	// base
+	ul {
+		list-style-type: none;
+		text-align: center;
+		margin: 0px;
+	}
+
+	.slides {
+		h1, h2, h3, h4, h5, h6 {
+			// increase margin or line-height?
+		}
+	}
+
+	// themes
+	.beige-themed {
+
+		h1, h2, h3, h4, h5, h6 {
+			em {
+				font-style: normal;
+				color: $darkRed;
+			}
+		}
+
+		img {
+			border: none;
+			box-shadow: none;
+			margin: 15px;
+		}
+	}
+
+	.red-themed {
+		color: $custom-beige;
+
+		h1, h2, h3, h4, h5, h6 {
+			color: $custom-beige;
+
+			em {
+				font-style: normal;
+				color: black;
+			}
+		}
+	}
+
+	.blue-themed {
+		color: $custom-beige;
+
+		h1, h2, h3, h4, h5, h6 {
+			color: $custom-beige;
+
+			em {
+				font-style: normal;
+				color: white;
+			}
+		}
+	}
+
+	.black-themed {
+		color: $custom-beige;
+
+		h1, h2, h3, h4, h5, h6 {
+			color: $custom-beige;
+
+			em {
+				font-style: normal;
+				color: #333e;
+			}
+		}
+	}
+}
