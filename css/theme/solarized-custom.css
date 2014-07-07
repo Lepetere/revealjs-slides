@@ -150,6 +150,10 @@ body {
   list-style-type: none;
   text-align: center;
   margin: 0px; }
+.reveal .slides .footnote {
+  color: #586e75;
+  font-size: 0.5em;
+  margin-top: 1em; }
 .reveal .beige-themed h1 em, .reveal .beige-themed h2 em, .reveal .beige-themed h3 em, .reveal .beige-themed h4 em, .reveal .beige-themed h5 em, .reveal .beige-themed h6 em {
   font-style: normal;
   color: #8c4738; }

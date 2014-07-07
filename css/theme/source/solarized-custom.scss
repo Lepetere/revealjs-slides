@@ -92,6 +92,15 @@ $selectionBackgroundColor: $magenta;
 		}
 	}
 
+	// elements
+	.slides {
+		.footnote {
+			color: $base01;
+			font-size: 0.5em;
+			margin-top: 1em;
+		}
+	}
+
 	// themes
 	.beige-themed {
 
