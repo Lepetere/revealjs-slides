@@ -53,8 +53,9 @@ $cyan:      #2aa198;
 $green:     #859900;
 
 // custom colors
-$darkRed: #8c4738;
+$custom-red: #8c4738;
 $custom-beige: #fdf6e3;
+$custom-blue: #545487;
 
 // Override theme settings (see ../template/settings.scss)
 $mainColor: $base00;
@@ -97,7 +98,7 @@ $selectionBackgroundColor: $magenta;
 		h1, h2, h3, h4, h5, h6 {
 			em {
 				font-style: normal;
-				color: $darkRed;
+				color: $custom-red;
 			}
 		}
 
@@ -138,7 +139,7 @@ $selectionBackgroundColor: $magenta;
 		color: $custom-beige;
 
 		h1, h2, h3, h4, h5, h6 {
-			color: $custom-beige;
+			color: $custom-red;
 
 			em {
 				font-style: normal;
