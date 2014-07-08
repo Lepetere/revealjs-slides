@@ -130,7 +130,7 @@
 							<li>Projektlayout und Dependency-Management</li>
 						</ul>
 						<pre class="fragment"><code data-trim contenteditable>
-							[clarango "0.3.2"]
+							[clarango "0.4.2"]
 						</code></pre>
 					</section>
 				</section>
@@ -140,6 +140,159 @@
 					<p>
 						Einbindung der Library mit Leiningen und Clojars.
 					</p>
+				</section>
+
+				<section>
+					<section>
+						<h2>Gestaltungsprobleme, grundsätzliche Fragen</h2>
+					</section>
+					<section data-state="blue-themed">
+						<h4>Probleme und grundsätzliche Fragen</h4>
+						<h2>Verbindungsdatenspeicherung</h2>
+					</section>
+					<section data-state="blue-themed">
+						<h4>Probleme und grundsätzliche Fragen</h4>
+						<h2>Entwurf einer leicht verständlichen API für Clarango</h2>
+						<aside class="notes">
+							- Spannungsfeld zwischen klassischen Datenbanktreibern und „clojuresquen“ Methoden
+							- bzw. zwischen einer zustandshaften Datenbank und zusandslosem, funktionalem Design
+							- untersuchte Treiber
+						</aside>
+					</section>
+					<section data-state="blue-themed">
+						<h4>Probleme und grundsätzliche Fragen</h4>
+						<h2>konsistente API mit ähnlichen Methoden</h2>
+						<aside class="notes">
+							- Einteilung in Namespaces (vs. Gliederung der ArangoDB HTTP API)
+							- Methodenbenennung
+							- Kaschierung von Inkonsistenten der ArangoDB HTTP-API
+						</aside>
+					</section>
+					<section data-state="blue-themed">
+						<h4>Probleme und grundsätzliche Fragen</h4>
+						<h2>flexible Methoden</h2>
+						<aside class="notes">
+							- sollten mit wenigen Parametern aufgerufen werden können (dann Verwendung von Default-Werten)
+							- alternativ aber auch Übergabe von mehreren Parametern möglich für manuelle Konfiguration
+							- gleichzeitig sollte es aber nicht verwirren und eine einfache Dokumentation möglich sein
+						</aside>
+					</section>
+					<section data-state="blue-themed">
+						<h4>Probleme und grundsätzliche Fragen</h4>
+						<h2>Entwurf einer leichtgewichtigen Architektur</h2>
+						<aside class="notes">
+							- möglichst wenig Overhead
+							- Validierenden von Eingabedaten?
+						</aside>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Architektur von Clarango</h2>
+					</section>
+					<section data-state="blue-themed">
+						<h4>Architektur</h4>
+						<h2>wiederverwendbare Methoden</h2>
+						<aside class="notes">
+							- kurze Implementierung der eigentlichen API Methoden
+						</aside>
+					</section>
+					<section data-state="blue-themed">
+						<h4>Architektur</h4>
+						<h2>Namespace Diagramm insgesamt</h2>
+					</section>
+					<section data-state="blue-themed">
+						<img src="imgs/Clarango-Architektur-insgesamt.jpg">
+					</section>
+					<section data-state="blue-themed">
+						<h4>Architektur</h4>
+						<h2>Namespace Diagramm: Aufruf einer document-Methode</h2>
+					</section>
+					<section data-state="blue-themed">
+						<img src="imgs/Clarango-Architektur-document-Aufruf.jpg">
+					</section>
+					<section data-state="blue-themed">
+						<h4>Architektur</h4>
+						<h2>Error-Handling</h2>
+						<pre class="fragment"><code data-trim contenteditable>
+							(catch Exception e (handle-error e))
+						</code></pre>
+						<pre class="fragment"><code data-trim contenteditable>
+							(defmulti handle-error "Handle an error trying to access a resource."
+								(fn [error] (type error)))
+							(defmethod handle-error java.net.ConnectException
+							  [error]
+							  (throw (Exception. (build-connection-exception-string error))))
+							(defmethod handle-error clojure.lang.ExceptionInfo
+							  [error]
+							  (throw (Exception. (build-server-exception-string error))))
+							(defmethod handle-error :default
+							  [error]
+							  (throw error))
+						</code></pre>
+					</section>
+				</section>
+
+				<section data-state="red-themed">	
+					<h2>Live Demo #2</h2>
+					<p>
+						Anwendung einer <em>document</em>-Methode sowie einer <em>collection-ops</em>-Methode als Alternative dazu.
+					</p>
+				</section>
+
+				<section>
+					<section>
+						<h2>Ergebnisse</h2>
+					</section>
+					<section data-state="blue-themed">
+						<h4>Ergebnisse</h4>
+						<h2>agile Vorgangsweise</h2>
+					</section>
+					<section data-state="blue-themed">
+						<h4>Ergebnisse</h4>
+						<h2>Architektur</h2>
+						<ul>
+							<li>HTTP-API Wrapper lässt sich mit sehr wenig Overhead umsetzen</li>
+							<li>insbesondere funktional!</li>
+							<li>viele wiederverwendbare Komponenten entworfen</li>
+						</ul>
+					</section>
+					<section data-state="blue-themed">
+						<h4>Ergebnisse</h4>
+						<h2>API</h2>
+						<ul>
+							<li class="fragment roll-in">klar gegliedert in Namespaces</li>
+							<li class="fragment roll-in">ähnliche Methoden durch Benutzung der gleichen Komponenten</li>
+							<li class="fragment roll-in">vielseitige Methoden</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Ausblick</h2>
+					</section>
+					<section data-state="blue-themed">
+						<h4>Ausblick</h4>
+						<h2>Überprüfung der Eingabetypen</h2>
+					</section>
+					<section data-state="blue-themed">
+						<h4>Ausblick</h4>
+						<h2>eigene Error-Klassen statt Standard-Java-Error-Klassen</h2>
+					</section>
+					<section data-state="blue-themed">
+						<h4>Ausblick</h4>
+						<h2>vollständige ArangoDB HTTP-API implementieren</h2>
+						<ul>
+							<li class="fragment roll-in">u.a. Batch-Requests</li>
+							<li class="fragment roll-in">
+								...Indexierung 
+								<span class="fragment">(schon per pull Request passiert!)</span>
+							</li>
+							<li class="fragment roll-in">viele Funktionen auch über Browser-Interface verfügbar</li>
+						</ul>
+					</section>
 				</section>
 
 				<section data-state="black-themed">
