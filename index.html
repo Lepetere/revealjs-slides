@@ -79,29 +79,43 @@
 					<section data-state="blue-themed">
 						<h4>Themen?</h4>
 						<h2><em class="fragment">multimodel </em>NoSQL</h2>
+						<aside class="notes">
+							- Dokumente
+							- Graphen
+							- Key/Value
+						</aside>
 					</section>
 					<section data-state="blue-themed">
 						<h4>Themen?</h4>
-						<h2>funktionale Programmierung / Clojure</h2>
+						<h2><em>funktionale Programmierung</em> / Clojure</h2>
+						<aside class="notes">
+							- der Treiber soll funktional umgesetzt werden
+							- d.h. insbesondere so zustandslos wie möglich (Zitat aus Aufgabenstellung: "stehen Benutzungskomfort und Zustandshaftigkeit in Konkurrenz, so können jedoch aus Gründen des Benutzungskomforts auch Ausnahmen gemacht werden")
+						</aside>
 					</section>
 					<section data-state="blue-themed">
 						<h4>Themen?</h4>
 						<h2>HTTP / REST</h2>
+						<aside class="notes">
+							- alle Kommunikation mit Clients läuft über HTTP
+							- REST ist Zustandslos, einer Kombination mit der ebenfalls	 zustandslosen funktionalen Programmierung bietet sich daher an
+						</aside>
 					</section>
 					<section data-state="blue-themed">
 						<h4>Themen?</h4>
 						<h2>leichtgewichtige Architektur</h2>
 						<aside class="notes">
 							- den Datenbankanfragen möglichst wenig Overhead hinzufügen
-							- funktional
+							- kompakter Kern mit wiederverwendbaren Funktionen
 						</aside>
 					</section>
 					<section data-state="blue-themed">
 						<h4>Themen?</h4>
-						<h2>Design einer einfachen und effektiven API</h2>
+						<h2>Design einer konsistenten, intuitiven und flexiblen API</h2>
 						<aside class="notes">
-							- intuitiv
-							- konsistent
+							- intuitiv zu verstehen
+							- flexibel einsetzbar im Bezug auf kurze Funktionsaufrufe mit Default-Werten
+							- ODER der Übergabe von weiteren Parametern mit Optionen nach Wahl
 						</aside>
 					</section>
 				</section>
@@ -160,6 +174,12 @@
 					<section data-state="blue-themed">
 						<h4>Probleme und grundsätzliche Fragen</h4>
 						<h2>Verbindungsdatenspeicherung</h2>
+						<aside class="notes">
+							- REST/HTTP-Schnittstelle ist zustandslos
+							- klassische, zustandsbehaftete DB-Verbindung kommt hier nicht vor
+							- trotzdem sollte es eine Möglichkeit geben, Verbindungsdaten dauerhaft zu speichern, damit diese nicht permanent angegeben bzw. in einer selbstverwalteten Variable zwischengespeichert werden müssen
+							- daher Speicherung in einer dynamischen Variable im Namespace core, ähnlich wie bei den untersuchten DB-Clients Monger, Elastisch und Neocons
+						</aside>
 					</section>
 					<section data-state="blue-themed">
 						<h4>Probleme und grundsätzliche Fragen</h4>
@@ -167,16 +187,16 @@
 						<aside class="notes">
 							- Spannungsfeld zwischen klassischen Datenbanktreibern und „clojuresquen“ Methoden
 							- bzw. zwischen einer zustandshaften Datenbank und zusandslosem, funktionalem Design
-							- untersuchte Treiber
+							- Orientierung an existierenden Clojure (NoSQL) Treibern
 						</aside>
 					</section>
 					<section data-state="blue-themed">
 						<h4>Probleme und grundsätzliche Fragen</h4>
 						<h2>konsistente API mit ähnlichen Methoden</h2>
 						<aside class="notes">
+							- Schaffung einer einheitlichen Funktionsschnittstelle
+							- Kaschierung von Inkonsistentien der ArangoDB HTTP-API
 							- Einteilung in Namespaces (vs. Gliederung der ArangoDB HTTP API)
-							- Methodenbenennung
-							- Kaschierung von Inkonsistenten der ArangoDB HTTP-API
 						</aside>
 					</section>
 					<section data-state="blue-themed">
@@ -259,7 +279,12 @@
 					</section>
 					<section data-state="blue-themed">
 						<h4>Ergebnisse</h4>
-						<h2>agile Vorgangsweise</h2>
+						<h2>Agile Entwicklung</h2>
+						<ul>
+							<li class="fragment roll-in">Es konnte ohne Umwege mit der Entwicklung und ersten Tests begonnen werden</li>
+							<li class="fragment roll-in">Sehr produktiv!</li>
+							<li class="fragment roll-in">Und motivierend</li>
+						</ul>
 					</section>
 					<section data-state="blue-themed">
 						<h4>Ergebnisse</h4>
@@ -268,7 +293,11 @@
 							<li class="fragment roll-in">HTTP-API Wrapper lässt sich mit sehr wenig Overhead umsetzen</li>
 							<li class="fragment roll-in">insbesondere funktional!</li>
 							<li class="fragment roll-in">viele wiederverwendbare Komponenten entworfen</li>
+							<li class="fragment roll-in">alle Ressource-URIs können mit der selben Methode zusammengebaut werden (~15 LOC)</li>
 						</ul>
+						<aside class="notes">
+							- letzter Punkt wäre ohne agile Herangehensweise schwer planbar gewesen und hätte eine SEHR zeitaufwendige Untersuchung der ArangoDB HTTP API vorausgesetzt
+						</aside>
 					</section>
 					<section data-state="blue-themed">
 						<h4>Ergebnisse</h4>
@@ -289,15 +318,15 @@
 						<h2>Testing</h2>
 						<ul>
 							<li class="fragment roll-in">TDD dauert lang/unproduktiv</li>
+							<li class="fragment roll-in">"quick and dirty" Tests in main.clj funktionieren auch</li>
 						</ul>
 					</section>
 					<section data-state="blue-themed">
 						<h4>Ergebnisse</h4>
-						<h2>mehr?</h2>
+						<h2>Wahrnehmung in der Community</h2>
 						<ul>
-							<li class="fragment roll-in"></li>
-							<li class="fragment roll-in"></li>
-							<li class="fragment roll-in"></li>
+							<li class="fragment roll-in">Clarango wurde in Blogs erwähnt</li>
+							<li class="fragment roll-in">Pull Request!</li>
 						</ul>
 					</section>
 				</section>
@@ -323,7 +352,7 @@
 								...Indexierung 
 								<span class="fragment">(schon per pull Request passiert!)</span>
 							</li>
-							<li class="fragment roll-in">viele Funktionen auch über Browser-Interface verfügbar</li>
+							<li class="fragment roll-in">viele Funktionen auch über JS-Shell oder Browser-Interface verfügbar</li>
 						</ul>
 					</section>
 				</section>
