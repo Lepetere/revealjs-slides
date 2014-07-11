@@ -304,9 +304,20 @@
 						<h2>API</h2>
 						<ul>
 							<li class="fragment roll-in">klar gegliedert in Namespaces</li>
-							<li class="fragment roll-in">ähnliche Methoden durch Benutzung der gleichen Komponenten</li>
+							<li class="fragment roll-in">alle Methoden sind ähnlich aufgebaut</li>
 							<li class="fragment roll-in">vielseitige Methoden</li>
+							<li class="fragment roll-in">vollständig funktionales Arbeiten möglich</li>
+							<pre class="fragment"><code data-trim contenteditable>
+							(with-connection {:server-url "http://.."}
+  ;; do something
+  )
+						</code></pre>
 						</ul>
+						<aside class="notes">
+							- gegliedert in wenige Namespaces, die deren Funktion klar anzeigen (weniger als bei ArangoDB)
+							- z.B. mehrere Query Namespaces von ArangoDB zusammengefasst
+							- Methoden sind gleich aufgebaut bzgl. Reihenfolge der Argumente; Inkonsistenzen der ArangoDB HTTP API wurden beseitigt
+						</aside>
 					</section>
 					<section data-state="blue-themed">
 						<h4>Ergebnisse</h4>
