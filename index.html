@@ -48,13 +48,10 @@
 					<img height="50" src="imgs/clojure_logo.png">
 					<img height="50" src="imgs/Arangodb_Logo_300.png">
 					<aside class="notes">
-						- Themen der Arbeit
-						- verwendete Libraries und Tools
-						- Demo Einbindung von Clarango
-						- Gestaltungsprobleme/grundsätzliche Fragen
-						- Die Architektur von Clarango
-						- Live-Demo einer Dokument-Methode und einer alternativen, „clojuresquen“ Methode
-						- Ausblick
+						- Themen der Arbeit, Libraries und Tools
+						- 2 Live Demos
+						- Architektur von Clarango
+						- Ergebnisse, Ausblick
 					</aside>
 				</section>
 
@@ -69,6 +66,7 @@
 						<h2>Clojure Treiber?</h2>
 						<h2 class="fragment roll-in">= Clojure Client?</h2>
 						<h2 class="fragment roll-in">= HTTP-API Wrapper?</h2>
+						<h2 class="fragment roll-in">Clarango!</h2>
 					</section>
 				</section>
 
@@ -89,16 +87,16 @@
 						<h4>Themen?</h4>
 						<h2><em>funktionale Programmierung</em> / Clojure</h2>
 						<aside class="notes">
-							- der Treiber soll funktional umgesetzt werden
-							- d.h. insbesondere so zustandslos wie möglich (Zitat aus Aufgabenstellung: "stehen Benutzungskomfort und Zustandshaftigkeit in Konkurrenz, so können jedoch aus Gründen des Benutzungskomforts auch Ausnahmen gemacht werden")
+							- der Treiber soll so zustandslos wie möglich umgesetzt werden
+							- (Zitat aus Aufgabenstellung: "stehen Benutzungskomfort und Zustandshaftigkeit in Konkurrenz, so können jedoch aus Gründen des Benutzungskomforts auch Ausnahmen gemacht werden")
 						</aside>
 					</section>
 					<section data-state="blue-themed">
 						<h4>Themen?</h4>
-						<h2>HTTP / REST</h2>
+						<h2>REST / HTTP</h2>
 						<aside class="notes">
 							- alle Kommunikation mit Clients läuft über HTTP
-							- REST ist Zustandslos, einer Kombination mit der ebenfalls	 zustandslosen funktionalen Programmierung bietet sich daher an
+							- (REST ist Zustandslos, einer Kombination mit der ebenfalls	 zustandslosen funktionalen Programmierung bietet sich daher an)
 						</aside>
 					</section>
 					<section data-state="blue-themed">
@@ -157,6 +155,9 @@
   :dependencies [[org.clojure/clojure "1.5.1"]
   				 [clarango "0.4.2"]])
 						</code></pre>
+						<aside class="notes">
+							- nach Upload auf Clojars ist Clarango selber als Library zur Einbindung in Leiningen verfügbar
+						</aside>
 					</section>
 				</section>
 
@@ -167,6 +168,7 @@
 					</p>
 				</section>
 
+				<!-- Not enough time for this!!
 				<section>
 					<section data-state="beige-themed">
 						<h2>Gestaltungsprobleme, grundsätzliche Fragen</h2>
@@ -216,32 +218,37 @@
 							- Validierenden von Eingabedaten?
 						</aside>
 					</section>
-				</section>
+				</section>-->
 
 				<section>
 					<section data-state="beige-themed">
 						<h2>Architektur von Clarango</h2>
 					</section>
-					<section data-state="blue-themed">
+					<!--<section data-state="blue-themed">
 						<h4>Architektur</h4>
 						<h2>wiederverwendbare Methoden</h2>
 						<aside class="notes">
 							- kurze Implementierung der eigentlichen API Methoden
 						</aside>
-					</section>
+					</section>-->
 					<section data-state="blue-themed">
 						<h4>Architektur</h4>
 						<h2>Namespace Diagramm insgesamt</h2>
 					</section>
 					<section data-state="blue-themed">
-						<img src="imgs/Clarango-Architektur-insgesamt.jpg">
+						<img src="imgs/Clarango-Architektur-insgesamt.jpg" style="margin: 0;">
+						<aside class="notes">
+							- ArangoDB API Namespaces wurden zu einigen wenigen Namespaces zusammengefasst
+							- z.B. query und graph Namespace
+							- relativ kurze Methodenimplementierungen, da alle die selben Methoden der Utility Namespaces benutzen
+						</aside>
 					</section>
 					<section data-state="blue-themed">
 						<h4>Architektur</h4>
 						<h2>Namespace Diagramm: Aufruf einer <em>document</em>-Methode</h2>
 					</section>
 					<section data-state="blue-themed">
-						<img src="imgs/Clarango-Architektur-document-Aufruf.jpg">
+						<img src="imgs/Clarango-Architektur-document-Aufruf.jpg" style="margin: 0;">
 					</section>
 					<section data-state="blue-themed">
 						<h4>Architektur</h4>
@@ -291,7 +298,6 @@
 						<h2>Architektur</h2>
 						<ul>
 							<li class="fragment roll-in">HTTP-API Wrapper lässt sich mit sehr wenig Overhead umsetzen</li>
-							<li class="fragment roll-in">insbesondere funktional!</li>
 							<li class="fragment roll-in">viele wiederverwendbare Komponenten entworfen</li>
 							<li class="fragment roll-in">alle Ressource-URIs können mit der selben Methode zusammengebaut werden (~15 LOC)</li>
 						</ul>
