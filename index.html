@@ -87,8 +87,7 @@
 						<h4>Themen?</h4>
 						<h2><em>funktionale Programmierung</em> / Clojure</h2>
 						<aside class="notes">
-							- der Treiber soll so zustandslos wie möglich umgesetzt werden
-							- (Zitat aus Aufgabenstellung: "stehen Benutzungskomfort und Zustandshaftigkeit in Konkurrenz, so können jedoch aus Gründen des Benutzungskomforts auch Ausnahmen gemacht werden")
+							- der Treiber soll funktional und so zustandslos wie möglich umgesetzt werden
 						</aside>
 					</section>
 					<section data-state="blue-themed">
@@ -96,12 +95,11 @@
 						<h2>REST / HTTP</h2>
 						<aside class="notes">
 							- alle Kommunikation mit Clients läuft über HTTP
-							- (REST ist Zustandslos, einer Kombination mit der ebenfalls	 zustandslosen funktionalen Programmierung bietet sich daher an)
 						</aside>
 					</section>
 					<section data-state="blue-themed">
 						<h4>Themen?</h4>
-						<h2>leichtgewichtige Architektur</h2>
+						<h2>leichtgewichtige <em>Architektur</em></h2>
 						<aside class="notes">
 							- den Datenbankanfragen möglichst wenig Overhead hinzufügen
 							- kompakter Kern mit wiederverwendbaren Funktionen
@@ -109,7 +107,7 @@
 					</section>
 					<section data-state="blue-themed">
 						<h4>Themen?</h4>
-						<h2>Design einer konsistenten, intuitiven und flexiblen API</h2>
+						<h2>Design einer konsistenten, intuitiven und flexiblen <em>API</em></h2>
 						<aside class="notes">
 							- intuitiv zu verstehen
 							- flexibel einsetzbar im Bezug auf kurze Funktionsaufrufe mit Default-Werten
@@ -123,37 +121,23 @@
 						<h2>Verwendete Libraries und Tools</h2>
 					</section>
 					<section data-state="blue-themed">
-						<h4>Tools?</h4>
-						<h2>git und Github</h2>
+						<h4>Versionsmanagement</h4>
+						<h2><em>git</em> und <em>Github</em></h2>
 						<img height="100" src="imgs/GitHub-Mark.png">
 					</section>
 					<section data-state="blue-themed">
-						<h4>Tools?</h4>
-						<h2>clj-http</h2>
-						<ul class="fragment roll-in">
-							<li>Clojure HTTP Library</li>
-							<li>Wrapper der Apache HttpComponents Library</li>
-						</ul>
+						<h4>2 Libraries</h4>
+						<h2><em>clj-http</em> und <em>Cheshire</em></h2>
 					</section>
 					<section data-state="blue-themed">
-						<h4>Tools?</h4>
-						<h2>Cheshire</h2>
-						<ul class="fragment roll-in">
-							<li>En- und Dekodieren von JSON-Objekten/Clojure Maps</li>
-							<li>Clojure Keywords werden zu Keyword Strings umgewandelt und umgekehrt</li>
-						</ul>
-					</section>
-					<section data-state="blue-themed">
-						<h4>Tools?</h4>
-						<h2>Leiningen</h2>
-						<ul>
-							<li>Projektlayout und Dependency-Management</li>
-						</ul>
+						<h4>Projektlayout und Dependency-Management</h4>
+						<h2><em>Leiningen</em></h2>
 						<pre class="fragment"><code data-trim contenteditable>
 							(defproject clarango-demo "0.1.0-SNAPSHOT"
   :description "Just a demo of the integration of the Clarango library..."
   :dependencies [[org.clojure/clojure "1.5.1"]
-  				 [clarango "0.4.2"]])
+  				 [clarango "0.4.2"]]
+)
 						</code></pre>
 						<aside class="notes">
 							- nach Upload auf Clojars ist Clarango selber als Library zur Einbindung in Leiningen verfügbar
@@ -186,31 +170,10 @@
 					</section>
 					<section data-state="blue-themed">
 						<h4>Architektur</h4>
-						<h2>Namespace Diagramm: Aufruf einer <em>document</em>-Methode</h2>
+						<h2>Namespace Diagramm: Aufruf einer document-Methode</h2>
 					</section>
 					<section data-state="blue-themed">
 						<img src="imgs/Clarango-Architektur-document-Aufruf.jpg" style="margin: 0;">
-					</section>
-					<section data-state="blue-themed">
-						<h4>Architektur</h4>
-						<h2>Error-Handling</h2>
-						<pre class="fragment"><code data-trim contenteditable>
-							(catch Exception e (handle-error e))
-						</code></pre>
-						<pre class="fragment"><code data-trim contenteditable>
-							(defmulti handle-error
-  "Handle an error trying to access a resource."
-  (fn [error] (type error)))
-(defmethod handle-error java.net.ConnectException
-  [error]
-  (throw (Exception. (build-connection-exception-string error))))
-(defmethod handle-error clojure.lang.ExceptionInfo
-  [error]
-  (throw (Exception. (build-server-exception-string error))))
-(defmethod handle-error :default
-  [error]
-  (throw error))
-						</code></pre>
 					</section>
 				</section>
 
@@ -240,31 +203,7 @@
 						<ul>
 							<li class="fragment roll-in">HTTP-API Wrapper lässt sich mit sehr wenig Overhead umsetzen</li>
 							<li class="fragment roll-in">viele wiederverwendbare Komponenten entworfen</li>
-							<li class="fragment roll-in">alle Ressource-URIs können mit der selben Methode zusammengebaut werden (~15 LOC)</li>
 						</ul>
-						<aside class="notes">
-							- letzter Punkt wäre ohne agile Herangehensweise schwer planbar gewesen und hätte eine SEHR zeitaufwendige Untersuchung der ArangoDB HTTP API vorausgesetzt
-						</aside>
-					</section>
-					<section data-state="blue-themed">
-						<h4>Ergebnisse</h4>
-						<h2>API</h2>
-						<ul>
-							<li class="fragment roll-in">klar gegliedert in Namespaces</li>
-							<li class="fragment roll-in">alle Methoden sind ähnlich aufgebaut</li>
-							<li class="fragment roll-in">vielseitige Methoden</li>
-							<li class="fragment roll-in">vollständig funktionales Arbeiten möglich</li>
-							<pre class="fragment"><code data-trim contenteditable>
-							(with-connection {:server-url "http://.."}
-  ;; do something
-  )
-						</code></pre>
-						</ul>
-						<aside class="notes">
-							- gegliedert in wenige Namespaces, die deren Funktion klar anzeigen (weniger als bei ArangoDB)
-							- z.B. mehrere Query Namespaces von ArangoDB zusammengefasst
-							- Methoden sind gleich aufgebaut bzgl. Reihenfolge der Argumente; Inkonsistenzen der ArangoDB HTTP API wurden beseitigt
-						</aside>
 					</section>
 					<section data-state="blue-themed">
 						<h4>Ergebnisse</h4>
