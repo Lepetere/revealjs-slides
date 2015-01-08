@@ -1,33 +1,24 @@
-Presentation slides done with [revealjs](https://github.com/hakimel/reveal.js).
+Presentation slides done in [revealjs](https://github.com/hakimel/reveal.js).
 
-Full usage instructions under [revealjs-README.md](https://github.com/Lepetere/revealjs-slides/blob/master/revealjs-README.md).
+## Content
 
-## Installation
+So far the following slides are available:
 
-The **basic setup** is for authoring presentations only. The **full setup** gives you access to all reveal.js features and plugins such as speaker notes as well as the development tasks needed to make changes to the source.
+*[bachelor presentation about Clarango (in german)](https://github.com/Lepetere/revealjs-slides/tree/master/bachelor-presentation)
 
-### Basic setup
+For quick presentation just open the respective `index.html` in the browser.
 
-The core of reveal.js is very easy to install. You'll simply need to download a copy of this repository and open the index.html file directly in your browser.
+## Full Usage
 
-1. Download the latest version of reveal.js from <https://github.com/hakimel/reveal.js/releases>
-
-2. Unzip and replace the example contents in index.html with your own
-
-3. Open index.html in a browser to view it
-
-
-### Full setup
-
-Some reveal.js features, like external markdown and speaker notes, require that presentations run from a local web server. The following instructions will set up such a server as well as all of the development tasks needed to make edits to the reveal.js source code.
+To run the presentations with all features
 
 1. Install [Node.js](http://nodejs.org/)
 
 2. Install [Grunt](http://gruntjs.com/getting-started#installing-the-cli)
 
-4. Clone the reveal.js repository
+4. Clone this repository
    ```sh
-   $ git clone https://github.com/hakimel/reveal.js.git
+   $ git clone https://github.com/Lepetere/revealjs-slides.git
    ```
 
 5. Navigate to the reveal.js folder
@@ -45,6 +36,8 @@ Some reveal.js features, like external markdown and speaker notes, require that 
    $ grunt serve
    ```
 
-8. Open <http://localhost:8000> to view your presentation
+8. To view the presentation open <http://localhost:8000> plus the name of the presentation's folder.
 
-   You can change the port by using `grunt serve --port 8001`.
+   You can also change the port using `grunt serve --port 8001`.
+
+For further instructions see the [original revealjs-README.md](https://github.com/Lepetere/revealjs-slides/blob/master/revealjs-README.md).
