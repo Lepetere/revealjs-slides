@@ -23,7 +23,7 @@ To run the presentations with all features
 
 5. Navigate to the reveal.js folder
    ```sh
-   $ cd reveal.js
+   $ cd revealjs-slides
    ```
 
 6. Install dependencies
@@ -41,3 +41,4 @@ To run the presentations with all features
    You can also change the port using `grunt serve --port 8001`.
 
 For further instructions see the [original revealjs-README.md](https://github.com/Lepetere/revealjs-slides/blob/master/revealjs-README.md).
+
