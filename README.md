@@ -4,7 +4,8 @@ Presentation slides done in [revealjs](https://github.com/hakimel/reveal.js).
 
 So far the following slides are available:
 
-*[bachelor presentation about Clarango (in german)](https://github.com/Lepetere/revealjs-slides/tree/master/bachelor-presentation)
+* [bachelor presentation about Clarango (in german)](https://github.com/Lepetere/revealjs-slides/tree/master/bachelor-presentation)
+* [Clarango presentation ClojureD 2015](https://github.com/Lepetere/revealjs-slides/tree/master/clarango-clojured-presentation)
 
 For quick presentation just open the respective `index.html` in the browser.
 
