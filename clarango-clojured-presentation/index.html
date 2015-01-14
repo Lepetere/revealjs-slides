@@ -44,114 +44,170 @@
 			<div class="slides">
 
 				<section data-state="beige-themed">
-					<h1><em>Clarango</em> - The ArangoDB Clojure Bridge</h1>
-					<img height="50" src="imgs/clojure_logo.png">
-					<img height="50" src="imgs/Arangodb_Logo_300.png">
-					<aside class="notes">
-						1. Who am I? (first time talk at dev conference)
-						-> bachelor in computer science and media
-						-> frontend dev
-						    -> with Ember.js and Javascript
-						    -> in my free time hacking on Clojure
-						-> musician
-					</aside>
+					<h1 style="color: #fdf6e3;"><em>Clarango</em> - The ArangoDB Clojure Bridge</h1>
+					<h3><em>Peter Fessel</em></h3>
+					<aside class="notes"></aside>
 				</section>
 
 				<section data-state="beige-themed">
-					<h2>What is Clarango?</h2>
-					<ul>
-						<li class="fragment roll-in">driver/wrapper for ArangoDB</li>
-						<li class="fragment roll-in">started as a bachelor thesis project</li>
-					</ul>
-					<aside class="notes">
-						-> purely academic context
-						-> kept on hacking on it
-						-> I am main contributor
-					</aside>
+					<img height="60" src="imgs/clojure_logo.png">
+					<img height="60" src="imgs/Arangodb_Logo_300.png">
+					<img src="imgs/bridge_1.jpg">
+					<aside class="notes"></aside>
 				</section>
 
 				<section data-state="beige-themed">
-					<h2>What is ArangoDB?</h2>
-					<h2 class="fragment roll-in">can do a lot!</h2>
-					<h2 class="fragment roll-in">„Eierlegende Wollmilchsau“ ;-)</h2>
-					<aside class="notes">
-					</aside>
+					<img height="60" src="imgs/clojure_logo.png">
+					<img height="60" src="imgs/Arangodb_Logo_300.png">
+					<img src="imgs/unfinished_bridge_2.jpg">
+					<aside class="notes"></aside>
 				</section>
 
 				<section>
-					<section data-state="beige-themed">
-						<h2>Clarango features</h2>
+					<section data-state="blue-themed">
+						<h2>ArangoDB?</h2>
 						<ul>
-							<li class="fragment roll-in">database management</li>
-							<li class="fragment roll-in">collection management</li>
-							<li class="fragment roll-in">document CRUD</li>
-							<li class="fragment roll-in">graphs</li>
-							<li class="fragment roll-in">queries/indices</li>
+							<li class="fragment roll-in">multimodel NoSQL DB</li>
+							<li class="fragment roll-in">can do a lot!</li>
 						</ul>
+						<aside class="notes">
+						</aside>
 					</section>
 					<section data-state="blue-themed">
-						<h4>Example 1</h4>
+						<h2>„Eierlegende Wollmilchsau“ ;-)</h2>
+						<img height="550" src="imgs/eierlegende-wollmilchsau.jpg">
+						<aside class="notes">
+						</aside>
+					</section>
+					<section data-state="blue-themed">
+						<ul style="background-color: black; padding: 40px 80px;">
+							<li>check it out at</li>
+							<li>www.arangodb.com</li>
+						</ul>
+						<aside class="notes">
+						</aside>
+					</section>
+				</section>
+
+				<section>
+					<section data-state="blue-themed">
+						<h2>What is Clarango?</h2>
+						<ul>
+							<li class="fragment roll-in">driver/wrapper for ArangoDB's HTTP API</li>
+							<li class="fragment roll-in">started as a bachelor thesis project</li>
+						</ul>
+						<aside class="notes">
+							-> purely academic context
+							-> kept on hacking on it
+							-> I am main contributor
+						</aside>
+					</section>
+					<section data-state="blue-themed">
+					<h2>Clarango features</h2>
+					<ul>
+						<li class="fragment roll-in">database management</li>
+						<li class="fragment roll-in">collection management</li>
+						<li class="fragment roll-in">document CRUD</li>
+						<li class="fragment roll-in">graphs</li>
+						<li class="fragment roll-in">queries/indices</li>
+					</ul>
+				</section>
+				</section>
+
+				<section>
+					<section data-state="blue-themed">
+						<h2>Give me examples!</h2>
+					</section>
+					<section data-state="blue-themed">
+						<h3>Connection</h3>
+						<pre><code data-trim contenteditable>
+							(defn some-code []
+  nil)
+						</code></pre>
 						<aside class="notes">
 							- connection
-			   				-> work with dynamic vars
+				   			-> work with dynamic vars
 						</aside>
 					</section>
 					<section data-state="blue-themed">
-						<h4>Example 2</h4>
+						<h3>Document CRUD</h3>
+						<pre><code data-trim contenteditable>
+							(defn some-code []
+  nil)
+						</code></pre>
 						<aside class="notes">
-							- create collection and document
+						</aside>
+					</section>
+					<section data-state="blue-themed">
+						<h3>Creating a graph</h3>
+						<pre><code data-trim contenteditable>
+							(defn some-code []
+ nil)
+						</code></pre>
+						<aside class="notes">
 						</aside>
 					</section>
 				</section>
 
 				<section>
-					<section data-state="beige-themed">
+					<section data-state="blue-themed">
 						<h2>Some sugar please...</h2>
 						<aside class="notes">
-							- shortcut methods
-							   - create-with-key
-							   - db-exists?
-							- Collection cla-assoc!, code demo!
-							- delay-collection
-							- sequential vs. nested approach
 						</aside>
 					</section>
 					<section data-state="blue-themed">
-						<h4>Stuff</h4>
+						<h3>Nesting</h3>
+						<pre><code data-trim contenteditable>
+							(defn some-code []
+ nil)
+						</code></pre>
 						<aside class="notes">
 						</aside>
 					</section>
 					<section data-state="blue-themed">
-						<h4>Stuff</h4>
+						<h3>Delayed Collection</h3>
+						<pre><code data-trim contenteditable>
+							(defn some-code []
+ nil)
+						</code></pre>
 						<aside class="notes">
 						</aside>
 					</section>
 					<section data-state="blue-themed">
-						<h4>Stuff</h4>
+						<h3>Clojure idiomatic collection methods</h3>
+						<pre><code data-trim contenteditable>
+							(defn some-code []
+ nil)
+						</code></pre>
 						<aside class="notes">
 						</aside>
 					</section>
 				</section>
 
-				<section data-state="black-themed">
-					<ul>
-						<li>Let us know what you think!</li>
-					</ul>
-				</section>
-
-				<section data-state="black-themed">
-					<ul>
-						<li>We are looking for contributors!</li>
-						<img src="imgs/we-want-you.png">
-					</ul>
-				</section>
-
-				<section data-state="black-themed">
-					<h2>Thank you</h2>
-					<ul>
-						<li>Further reading:</li>
-						<li>https://github.com/edlich/clarango/</li>
-					</ul>
+				<section>
+					<section data-state="black-themed">
+						<ul>
+							<li>Let us know what you think!</li>
+						</ul>
+					</section>
+					<section data-state="black-themed">
+						<ul>
+							<li>We are looking for contributors!</li>
+							<img src="imgs/we-want-you.png">
+						</ul>
+					</section>
+					<section data-state="black-themed" style="background-color: black;">
+						<h2>Thank you</h2>
+						<ul>
+							<li>Further reading:</li>
+							<li>https://github.com/edlich/clarango/</li>
+						</ul>
+						<ul>
+							<li>Find this presentation at:</li>
+							<li>https://github.com/Lepetere/revealjs-slides</li>
+						</ul>
+						<div class="footnote" style="color: gray;">www.peterfessel.com</div>
+					</section>
 				</section>
 
 			</div>
@@ -176,8 +232,8 @@
 				backgroundTransition: 'fade',
 
 				// Parallax scrolling
-				// parallaxBackgroundImage: 'imgs/Sun-City-_Panorama.jpg',
-				// parallaxBackgroundSize: '2048px 765px',
+				parallaxBackgroundImage: 'imgs/Sydney_harbour_bridge_new_south_wales.jpg',
+				parallaxBackgroundSize: '2599px 1494px',
 
 				// Optional libraries used to extend on reveal.js
 				dependencies: [
