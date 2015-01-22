@@ -46,21 +46,29 @@
 				<section data-state="beige-themed">
 					<h1 style="color: #fdf6e3;"><em>Clarango</em> - The ArangoDB Clojure Bridge</h1>
 					<h3><em>Peter Fessel</em></h3>
-					<aside class="notes"></aside>
+					<aside class="notes">
+						- thank you for still being here after this long day of talks<br>
+						- I'm going to keep it short<br>
+						- in this talk I'm going to give an introduction to Clarango<br>
+					</aside>
 				</section>
 
 				<section data-state="beige-themed">
-					<img height="60" src="imgs/clojure_logo.png">
-					<img height="60" src="imgs/Arangodb_Logo_300.png">
-					<img src="imgs/bridge_1.jpg">
-					<aside class="notes"></aside>
+					<img src="imgs/bridge_1_with_logos.jpg" style="margin: 50px 10px;">
+					<aside class="notes">
+						- Clarango is - like the title says - a bridge between Clojure and ArangoDB
+					</aside>
 				</section>
 
 				<section data-state="beige-themed">
-					<img height="60" src="imgs/clojure_logo.png">
-					<img height="60" src="imgs/Arangodb_Logo_300.png">
+					<img height="60" src="imgs/clojure_logo.png" style="background: none; display: block; margin: 20px auto;">
 					<img src="imgs/unfinished_bridge_2.jpg">
-					<aside class="notes"></aside>
+					<img height="60" src="imgs/Arangodb_Logo_300.png" style="background: none;">
+					<aside class="notes">
+						- ... actually it looks a little bit more like this ...<br>
+						- a connection is there, but there are also big parts missing<br>
+						- Clojure we already know, but what is ArangodB?
+					</aside>
 				</section>
 
 				<section>
@@ -68,15 +76,25 @@
 						<h2>ArangoDB?</h2>
 						<ul>
 							<li class="fragment roll-in">multimodel NoSQL DB</li>
-							<li class="fragment roll-in">can do a lot!</li>
 						</ul>
 						<aside class="notes">
+							- Clojure we all know, but what is ArangoDB?<br>
+							(ask who knows it or has heard about it?)<br>
+							- combines document, key/value and graph approach in one DB<br>
+							- HTTP interface<br>
+							- horizontal scaling with sharding<br>
+							- uses MVCC, offers also ACID transactions<br>
+							- own query language<br>
+							- ... has a lot of features, is a very ambitious project
 						</aside>
 					</section>
 					<section data-state="blue-themed">
 						<h2>„Eierlegende Wollmilchsau“ ;-)</h2>
 						<img height="550" src="imgs/eierlegende-wollmilchsau.jpg">
 						<aside class="notes">
+							- in german you might describe it like this ;-)<br>
+							- because it combines so many features in only one DB<br>
+							/so many things at once
 						</aside>
 					</section>
 					<section data-state="blue-themed">
@@ -85,6 +103,8 @@
 							<li>www.arangodb.com</li>
 						</ul>
 						<aside class="notes">
+							- you should check it out at arangodb.com<br>
+							- this talk is not about ArangoDB though...
 						</aside>
 					</section>
 				</section>
@@ -93,13 +113,17 @@
 					<section data-state="blue-themed">
 						<h2>What is Clarango?</h2>
 						<ul>
-							<li class="fragment roll-in">driver/wrapper for ArangoDB's HTTP API</li>
+							<li class="fragment roll-in">driver/wrapper for ArangoDB's HTTP interface</li>
 							<li class="fragment roll-in">started as a bachelor thesis project</li>
 						</ul>
 						<aside class="notes">
-							-> purely academic context
-							-> kept on hacking on it
-							-> I am main contributor
+							- ... it is about Clarango!<br>
+							- So what is Clarango??<br>
+							- wrapper for ArangoDB's HTTP API<br>
+							- tries to give communication with ArangoDB a Clojure feeling<br>
+							- started as a project in my bachelor thesis last year<br>
+							- idea by Stefan Edlich<br>
+							- kept on hacking on it since to try out some ideas
 						</aside>
 					</section>
 					<section data-state="blue-themed">
@@ -111,40 +135,70 @@
 						<li class="fragment roll-in">graphs</li>
 						<li class="fragment roll-in">queries/indices</li>
 					</ul>
-				</section>
+					<aside class="notes">
+						- let's take a look at the features...<br>
+						- ... seems like a lot, but ...<br>
+						- a lot of ArangoDB's features are not implemented yet
+					</aside>
+					</section>
 				</section>
 
 				<section>
 					<section data-state="blue-themed">
 						<h2>Give me examples!</h2>
+						<aside class="notes">
+							- what does working with Clarango look like?
+						</aside>
 					</section>
 					<section data-state="blue-themed">
 						<h3>Connection</h3>
-						<pre><code data-trim contenteditable>
-							(defn some-code []
-  nil)
+						<pre class="fragment"><code data-trim contenteditable>
+							(set-connection! 
+  {
+    :connection-url "http://localhost:8529/"
+    :db-name "my-db"
+    :collection-name "my-collection"
+  })
+						</code></pre>
+						<pre class="fragment"><code data-trim contenteditable>
+							(set-default-db! :my-db)
+(set-default-collection! :my-collection)
+;; more code ...
+						</code></pre>
+						<pre class="fragment"><code data-trim contenteditable>
+							(with-db :my-db
+  (with-collection :my-collection
+    ;; ... pass your body of code here ...
+  ))
 						</code></pre>
 						<aside class="notes">
-							- connection
-				   			-> work with dynamic vars
+							- you can set the connection by passing a connection map<br>
+							- ... you can use methods like this to change the default db or connection<br>
+							- ... or dynamically rebind these parameters<br>
+							- ... more functional, less sequential<br>
+							- in the method design I tried to stick to the design that existing Clojure drivers have<br>
+							- ... for example Clutch for CouchDB or Monger for MongoDB
 						</aside>
 					</section>
 					<section data-state="blue-themed">
 						<h3>Document CRUD</h3>
-						<pre><code data-trim contenteditable>
-							(defn some-code []
-  nil)
+						<pre class="fragment"><code data-trim contenteditable>
+						;; create
+(document/create {:desc "some test document"})
+(document/create-with-key {:desc "some test document"} :test-doc)
+;; read
+(document/get-by-key :test-doc)
+(document/get-by-example {:desc "some test document"})
+;; update
+(document/update-by-key {:add "more info"} :test-doc)
+(document/update-by-example {:add "more info"} {:desc "some test document"})
+;; delete
+(document/delete-by-key :test-doc)
+(document/delete-by-example {:desc "some test document"})
 						</code></pre>
 						<aside class="notes">
-						</aside>
-					</section>
-					<section data-state="blue-themed">
-						<h3>Creating a graph</h3>
-						<pre><code data-trim contenteditable>
-							(defn some-code []
- nil)
-						</code></pre>
-						<aside class="notes">
+							- what would some document CRUD look like..?<br>
+							- just like you would expect.. hopefully..?
 						</aside>
 					</section>
 				</section>
@@ -153,33 +207,74 @@
 					<section data-state="blue-themed">
 						<h2>Some sugar please...</h2>
 						<aside class="notes">
+							- let's take a look at the more fun parts ...
 						</aside>
 					</section>
 					<section data-state="blue-themed">
 						<h3>Nesting</h3>
-						<pre><code data-trim contenteditable>
-							(defn some-code []
- nil)
+						<pre class="fragment"><code data-trim contenteditable>
+							(with-db (database/create :my-db [])
+  (document/create-with-key {:description "nice stuff"} :my-doc 
+    (collection/create :my-collection)))
 						</code></pre>
+						<pre class="fragment"><code data-trim contenteditable>
+							(graph/create :test-graph 
+  (collection/create :people {"type" 2})
+  (collection/create :friendships {"type" 3}))
+  						</code></pre>
 						<aside class="notes">
+							- some serious nesting is possible since v0.6<br>
+							- here we create a db, a collection and a document in one nested expression<br>
+							- ... here is another example creating a graph<br>
+							- let me know if you find this useful ... or just confusing
 						</aside>
 					</section>
 					<section data-state="blue-themed">
 						<h3>Delayed Collection</h3>
-						<pre><code data-trim contenteditable>
-							(defn some-code []
- nil)
+						<pre class="fragment" style="margin: 30px 0px;"><code data-trim contenteditable>
+							(collection/get-delayed-collection :my-collection :my-db)
+						</code></pre>
+						<pre class="fragment" style="margin: 30px 0px;"><code data-trim contenteditable>
+							(keys (collection/get-delayed-collection :my-collection :my-db))
+						</code></pre>
+						<pre class="fragment" style="margin: 30px 0px;"><code data-trim contenteditable>
+							(let [delayed-collection (get-delayed-collection :my-collection :my-db)]
+  (doseq [k (keys delayed-collection)]
+    (pprint @(get delayed-collection k))))
 						</code></pre>
 						<aside class="notes">
+							- feature I added with the latest version of Clarango<br>
+							- retrieves a whole collection with one method call<br>
+							- ... map mapping keys to documents as delays<br>
+							- so still only one HTTP call (even for large collections)<br>
+							- ... get all document keys like this<br>
+							- ... iterate over all documents like this<br>
+							- ... we iterate over all keys and dereference the delays
 						</aside>
 					</section>
 					<section data-state="blue-themed">
 						<h3>Clojure idiomatic collection methods</h3>
-						<pre><code data-trim contenteditable>
-							(defn some-code []
- nil)
-						</code></pre>
+						<div class="fragment" style="margin: 30px 0px;">
+							<pre ><code data-trim contenteditable>
+								(conj [] {:name "a test document"})
+							</code></pre>
+							<pre><code data-trim contenteditable>
+								(assoc {} :my-doc {:name "a test document"})
+							</code></pre>
+						</div>
+						<div class="fragment" style="margin: 30px 0px;">
+							<pre><code data-trim contenteditable>
+								(cla-assoc! "test-collection" :test-doc {:name "a test document"})
+							</code></pre>
+							<pre><code data-trim contenteditable>
+								(cla-conj! "test-collection" {:name "a test document"}))
+							</code></pre>
+						</div>
 						<aside class="notes">
+							- idea stolen from the Clojure CouchDB driver Clutch<br>
+							- we take clojure collection methods like associate and conjoin<br>
+							- ... and create similiar methods to modify database collections<br>
+							- experimental, the use of these methods is a different one
 						</aside>
 					</section>
 				</section>
@@ -189,12 +284,28 @@
 						<ul>
 							<li>Let us know what you think!</li>
 						</ul>
+						<aside class="notes">
+							- this is already the end of my brief overview<br>
+							- just try it out and ...<br>
+							- most important: let us know what you think!
+						</aside>
 					</section>
 					<section data-state="black-themed">
 						<ul>
 							<li>We are looking for contributors!</li>
 							<img src="imgs/we-want-you.png">
 						</ul>
+						<aside class="notes">
+							- btw we are looking for contributors!<br>
+							- ArangoDB's progress is very fast<br>
+							- API changes quite a lot<br>
+							- it's hard to maintain the project with one person<br>
+							- also there are tons of features still to be implemented like:<br>
+							  - user management/authentication<br>
+							  - batch operations to update or create multiple documents at the same time<br>
+							  - collection sharding<br>
+							(just to name a few)
+						</aside>
 					</section>
 					<section data-state="black-themed" style="background-color: black;">
 						<h2>Thank you</h2>
@@ -202,11 +313,11 @@
 							<li>Further reading:</li>
 							<li>https://github.com/edlich/clarango/</li>
 						</ul>
-						<ul>
-							<li>Find this presentation at:</li>
-							<li>https://github.com/Lepetere/revealjs-slides</li>
-						</ul>
 						<div class="footnote" style="color: gray;">www.peterfessel.com</div>
+						<aside class="notes">
+							- for further reading check the Github site<br>
+							- all documentation is linked there
+						</aside>
 					</section>
 				</section>
 
@@ -232,7 +343,7 @@
 				backgroundTransition: 'fade',
 
 				// Parallax scrolling
-				parallaxBackgroundImage: 'imgs/Sydney_harbour_bridge_new_south_wales.jpg',
+				parallaxBackgroundImage: 'imgs/Sydney_harbour_bridge_new_south_wales_darker.jpg',
 				parallaxBackgroundSize: '2599px 1494px',
 
 				// Optional libraries used to extend on reveal.js
